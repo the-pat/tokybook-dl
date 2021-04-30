@@ -5,7 +5,7 @@ const fsPromises = require("fs/promises");
 const path = require("path");
 const got = require("got");
 
-const { getBody, getTracks } = require('./lib');
+const { getBody, getTracks, validateTracks } = require("./lib");
 
 const pipeline = promisify(stream.pipeline);
 
@@ -25,8 +25,6 @@ const getUrl = async (track) => {
   );
   return body.link_mp3;
 };
-
-const validateTracks = (tracks) => tracks.filter((track) => track.url);
 
 const downloadTrack = async (track, dir) => {
   let [_book, _, filename] = track.chapter_link_dropbox.split("/");
