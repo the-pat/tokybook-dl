@@ -4,6 +4,6 @@ const main = require('./main');
 
 const cli = new Command();
 
-cli.action(main);
+cli.arguments("[dir] [url]").action(main);
 
 module.exports = cli;

@@ -1,8 +1,11 @@
 const { getBody, getTracks, validateTracks, downloadTrack } = require("../lib");
 
-const main = async () => {
-  const url = "https://tokybook.com/tales-from-earthsea/";
-  const dir = "/Users/pat/Documents/Audiobooks";
+const defaults = {
+  DIR: "/Users/pat/Documents/Audiobooks",
+  URL: "https://tokybook.com/tales-from-earthsea/",
+};
+
+const main = async (dir = defaults.DIR, url = defaults.URL) => {
   const body = await getBody(url);
   const unvalidatedTracks = getTracks(body);
   const tracks = validateTracks(unvalidatedTracks);
