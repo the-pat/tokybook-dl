@@ -5,6 +5,8 @@ const fsPromises = require("fs/promises");
 const path = require("path");
 const got = require("got");
 
+const { getBody } = require('./lib');
+
 const pipeline = promisify(stream.pipeline);
 
 const getId = (id) => {
@@ -71,8 +73,7 @@ const downloadTrack = async (track, dir) => {
 const main = async () => {
   const url = "https://tokybook.com/tales-from-earthsea/";
   const dir = "/Users/pat/Documents/Audiobooks";
-  const response = await got(url);
-  const { body } = response;
+  const body = await getBody(url);
   const unvalidatedTracks = getTracks(body);
   const tracks = validateTracks(unvalidatedTracks);
   await Promise.all(tracks.map((track) => downloadTrack(track, dir)));
