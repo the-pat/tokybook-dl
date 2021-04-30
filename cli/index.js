@@ -1,4 +1,4 @@
-const { getBody, getTracks, validateTracks, downloadTrack } = require("./lib");
+const { getBody, getTracks, validateTracks, downloadTrack } = require("../lib");
 
 const main = async () => {
   const url = "https://tokybook.com/tales-from-earthsea/";
