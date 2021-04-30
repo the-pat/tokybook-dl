@@ -5,7 +5,7 @@ const fsPromises = require("fs/promises");
 const path = require("path");
 const got = require("got");
 
-const { getBody } = require('./lib');
+const { getBody, getTracks } = require('./lib');
 
 const pipeline = promisify(stream.pipeline);
 
@@ -13,19 +13,6 @@ const getId = (id) => {
   const adjusted = id - 1;
   const prefix = adjusted > 9 ? "" : "0";
   return prefix + adjusted;
-};
-
-const getTracks = (html) => {
-  const unparsedWithTrailingCommas = html
-    .match(/tracks = \[[.\s\S]*?\]/)[0]
-    .replace("tracks = ", "");
-  const unparsed = unparsedWithTrailingCommas.replace(
-    /\,(?!\s*?[\{\[\"\'\w])/g,
-    ""
-  );
-  const tracks = JSON.parse(unparsed);
-
-  return tracks;
 };
 
 const getUrl = async (track) => {
