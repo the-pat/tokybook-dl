@@ -1,5 +1,5 @@
+const cli = require('./cli');
 
-const cli = require("./cli");
 (async () => {
   try {
     await cli.parseAsync();
