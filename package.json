@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint .",
+    "eslint": "eslint --fix .",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,11 @@
   "dependencies": {
     "commander": "^7.2.0",
     "got": "^11.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^6.0.0"
   }
 }
