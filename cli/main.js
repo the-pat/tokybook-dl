@@ -1,21 +1,25 @@
 const {
-  getBody, getTracks, validateTracks, downloadTrack, util: { debugLogBy },
+  getBody, getTracks, validateTracks, downloadTrack, logger,
 } = require('../lib');
 
 const defaults = {
-  DIR: '/Users/pat/Documents/Audiobooks',
+  DIR: '.',
   URL: 'https://tokybook.com/tales-from-earthsea/',
 };
 
 const main = async (dir = defaults.DIR, url = defaults.URL, { debug: isDebugEnabled }) => {
-  const debugLog = debugLogBy(isDebugEnabled);
-  debugLog(dir, url);
+  logger.level = isDebugEnabled ? 'debug' : 'info';
+  logger.debug({ dir, url });
 
   const body = await getBody(url);
   const unvalidatedTracks = getTracks(body);
   const tracks = validateTracks(unvalidatedTracks);
 
+  logger.info(`Started :: Downloading ${tracks.length} tracks.`);
+
   await Promise.all(tracks.map((track) => downloadTrack(track, dir)));
+
+  logger.info(`Completed :: Downloaded ${tracks.length} tracks.`);
 };
 
 module.exports = main;
