@@ -6,6 +6,8 @@
     },
     "extends": [
         "airbnb-typescript/base"
+        // TODO: Enable this after typescript conversion?
+        // "plugin:@typescript-eslint/recommended"
     ],
     "parserOptions": {
         "project": "./tsconfig.json"
