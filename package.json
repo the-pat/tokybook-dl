@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "build": "tsc",
+    "debug": "node --inspect=6666 -r ts-node/register index.js",
     "test": "eslint .",
     "eslint": "eslint --fix .",
     "prepare": "husky install"
@@ -32,6 +33,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "husky": "^6.0.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "ts-node": "^10.0.0"
   }
 }
