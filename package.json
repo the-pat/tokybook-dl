@@ -2,9 +2,9 @@
   "name": "tokybook-dl",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "build": "tsc",
     "test": "eslint .",
     "eslint": "eslint --fix .",

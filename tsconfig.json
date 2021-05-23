@@ -15,12 +15,11 @@
     "paths": {
       "*": [
         "node_modules/*",
-        "lib/types/*"
+        "src/lib/types/*"
       ]
     }
   },
   "include": [
-    "cli/**/*",
-    "lib/**/*"
+    "src/**/*",
   ]
 }
