@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    // TODO: Remove this once the typescript
+    // TODO: conversion is completed.
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2020",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "src/lib/types/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+  ]
+}
