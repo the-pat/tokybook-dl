@@ -25,12 +25,18 @@ const getUrl = async (track: TrackWithUrl) => {
   return body.link_mp3;
 };
 
+const getDirPath = (track: TrackWithUrl, dir: string) => {
+  const [, , filename] = track.chapter_link_dropbox.split('/');
+  const fileparts = filename.split(' - ');
+  const book = fileparts[0];
+  return path.join(dir, book);
+};
+
 const downloadTrack = async (track: TrackWithUrl, dir: string) => {
   let [, , filename] = track.chapter_link_dropbox.split('/');
 
   const fileparts = filename.split(' - ');
   const filestats = path.parse(filename);
-  const book = fileparts[0];
 
   if (fileparts.length === 2) {
     filename = filename.replace(filestats.name, `${getId(track.track)}`);
@@ -43,7 +49,7 @@ const downloadTrack = async (track: TrackWithUrl, dir: string) => {
       .replace(`-${track.chapter_id}`, '');
   }
 
-  const dirpath = path.join(dir, book);
+  const dirpath = getDirPath(track, dir);
   const filepath = path.join(dirpath, filename);
   await fsPromises.mkdir(dirpath, { recursive: true });
 
