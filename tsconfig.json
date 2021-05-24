@@ -14,9 +14,9 @@
     "baseUrl": ".",
     "paths": {
       "*": [
-        "node_modules/*",
-        "src/lib/types/*"
-      ]
+        "node_modules/*"
+      ],
+      "types/*": ["src/types/*"],
     }
   },
   "include": [
