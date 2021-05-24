@@ -1,7 +1,7 @@
-const pino = require('pino');
+import pino from 'pino';
 
 const logger = pino({
   prettyPrint: true,
 });
 
-module.exports = { logger };
+export default logger;
