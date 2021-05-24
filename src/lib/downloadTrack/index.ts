@@ -5,6 +5,7 @@ import fsPromises from 'fs/promises';
 import got from 'got';
 import fs from 'fs';
 import { AutoplaylistMp3, TrackWithUrl } from 'types/lib';
+import getDirPath from './getDirPath';
 
 const pipeline = promisify(stream.pipeline);
 
@@ -23,13 +24,6 @@ const getUrl = async (track: TrackWithUrl) => {
     },
   );
   return body.link_mp3;
-};
-
-const getDirPath = (track: TrackWithUrl, dir: string) => {
-  const [, , filename] = track.chapter_link_dropbox.split('/');
-  const fileparts = filename.split(' - ');
-  const book = fileparts[0];
-  return path.join(dir, book);
 };
 
 const downloadTrack = async (track: TrackWithUrl, dir: string) => {
