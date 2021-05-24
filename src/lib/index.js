@@ -1,4 +1,4 @@
-const getBody = require('./getBody');
+const getBody = require('./getBody').default;
 const getTracks = require('./getTracks');
 const validateTracks = require('./validateTracks');
 const downloadTrack = require('./downloadTrack');

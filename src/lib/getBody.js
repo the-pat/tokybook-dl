@@ -1,4 +1,4 @@
-const got = require('got');
+import got from 'got';
 
 const getBody = async (url) => {
   const response = await got(url);
@@ -6,4 +6,4 @@ const getBody = async (url) => {
   return body;
 };
 
-module.exports = getBody;
+export default getBody;
