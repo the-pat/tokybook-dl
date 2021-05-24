@@ -1,20 +1,21 @@
-const { promisify } = require('util');
-const stream = require('stream');
-const path = require('path');
-const fsPromises = require('fs/promises');
-const got = require('got');
-const fs = require('fs');
+import { promisify } from 'util';
+import stream from 'stream';
+import path from 'path';
+import fsPromises from 'fs/promises';
+import got from 'got';
+import fs from 'fs';
+import { AutoplaylistMp3, TrackWithUrl } from 'types/lib';
 
 const pipeline = promisify(stream.pipeline);
 
-const getId = (id) => {
+const getId = (id: number) => {
   const adjusted = id - 1;
   const prefix = adjusted > 9 ? '' : '0';
   return prefix + adjusted;
 };
 
-const getUrl = async (track) => {
-  const { body } = await got.post(
+const getUrl = async (track: TrackWithUrl) => {
+  const { body } = await got.post<AutoplaylistMp3>(
     'https://autoplaylist.top/api-us/getMp3Link',
     {
       json: { chapterId: track.chapter_id, serverType: 1 },
@@ -24,7 +25,7 @@ const getUrl = async (track) => {
   return body.link_mp3;
 };
 
-const downloadTrack = async (track, dir) => {
+const downloadTrack = async (track: TrackWithUrl, dir: string) => {
   let [, , filename] = track.chapter_link_dropbox.split('/');
 
   const fileparts = filename.split(' - ');
@@ -49,8 +50,8 @@ const downloadTrack = async (track, dir) => {
   const url = track.url === 'NA' ? await getUrl(track) : track.url;
   await pipeline(
     got.stream(url),
-    fs.createWriteStream(filepath, { flag: 'wx' }),
+    fs.createWriteStream(filepath, { flags: 'wx' }),
   );
 };
 
-module.exports = downloadTrack;
+export default downloadTrack;

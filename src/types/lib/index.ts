@@ -9,3 +9,5 @@ export type TrackRaw = {
 };
 
 export type TrackWithUrl = Required<TrackRaw>;
+
+export type AutoplaylistMp3 = { duration: number; link_mp3: string };

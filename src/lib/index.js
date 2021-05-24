@@ -1,7 +1,7 @@
 const getBody = require('./getBody').default;
 const getTracks = require('./getTracks').default;
 const validateTracks = require('./validateTracks').default;
-const downloadTrack = require('./downloadTrack');
+const downloadTrack = require('./downloadTrack').default;
 const { logger } = require('./logger');
 
 module.exports = {
