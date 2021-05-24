@@ -5,4 +5,7 @@ export type TrackRaw = {
   name: string;
   duration: string;
   track: number;
+  url?: string;
 };
+
+export type TrackWithUrl = Required<TrackRaw>;

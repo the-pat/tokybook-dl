@@ -22,7 +22,7 @@ const main = async (
 
   logger.info(`Started :: Downloading ${tracks.length} tracks.`);
 
-  await Promise.all(tracks.map((track: unknown) => downloadTrack(track, dir)));
+  await Promise.all(tracks.map((track) => downloadTrack(track, dir)));
 
   logger.info(`Completed :: Downloaded ${tracks.length} tracks.`);
 };
