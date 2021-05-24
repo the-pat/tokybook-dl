@@ -1,9 +1,9 @@
-const getBody = require('./getBody').default;
-const getTracks = require('./getTracks').default;
-const validateTracks = require('./validateTracks').default;
-const downloadTrack = require('./downloadTrack').default;
-const logger = require('./logger').default;
+import getBody from './getBody';
+import getTracks from './getTracks';
+import validateTracks from './validateTracks';
+import downloadTrack from './downloadTrack';
+import logger from './logger';
 
-module.exports = {
+export {
   getBody, getTracks, validateTracks, downloadTrack, logger,
 };
