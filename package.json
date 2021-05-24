@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node dist/index.js",
     "build": "tsc",
-    "debug": "node --inspect=6666 -r ts-node/register index.js",
+    "debug": "node --inspect=6666 -r ts-node/register src/index.ts",
     "test": "eslint .",
     "posttest": "npm run build",
     "eslint": "eslint --fix .",
