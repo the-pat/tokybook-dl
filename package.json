@@ -7,8 +7,9 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "debug": "node --inspect=6666 -r ts-node/register src/index.ts",
-    "test": "eslint .",
+    "test": "eslint . && jest .",
     "posttest": "npm run build",
+    "jest": "jest .",
     "eslint": "eslint --fix .",
     "prepare": "husky install",
     "prepublishOnly": "npm run test"
@@ -32,11 +33,14 @@
   },
   "devDependencies": {
     "@types/pino": "^6.3.8",
+    "@types/jest": "^26.0.23",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-plugin-import": "^2.22.1",
     "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.6",
     "ts-node": "^10.0.0",
     "typescript": "^4.2.4"
   }
