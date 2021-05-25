@@ -5,6 +5,7 @@ import fsPromises from 'fs/promises';
 import got from 'got';
 import fs from 'fs';
 import { AutoplaylistMp3, TrackWithUrl } from 'types/lib';
+import getDirPath from './getDirPath';
 
 const pipeline = promisify(stream.pipeline);
 
@@ -30,7 +31,6 @@ const downloadTrack = async (track: TrackWithUrl, dir: string) => {
 
   const fileparts = filename.split(' - ');
   const filestats = path.parse(filename);
-  const book = fileparts[0];
 
   if (fileparts.length === 2) {
     filename = filename.replace(filestats.name, `${getId(track.track)}`);
@@ -43,7 +43,7 @@ const downloadTrack = async (track: TrackWithUrl, dir: string) => {
       .replace(`-${track.chapter_id}`, '');
   }
 
-  const dirpath = path.join(dir, book);
+  const dirpath = getDirPath(track, dir);
   const filepath = path.join(dirpath, filename);
   await fsPromises.mkdir(dirpath, { recursive: true });
 
