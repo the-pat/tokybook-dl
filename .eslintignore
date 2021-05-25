@@ -1,4 +1,2 @@
 dist
-# TODO: Configure ESLint to behave nicely with the test dir
-test
 jest.config.js
