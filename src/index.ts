@@ -1,5 +1,5 @@
-const { logger } = require('./lib');
-const cli = require('./cli');
+import { logger } from './lib';
+import cli from './cli';
 
 (async () => {
   try {

@@ -1,6 +1,6 @@
-const { Command } = require('commander');
+import { Command } from 'commander';
 
-const main = require('./main');
+import main from './main';
 
 const cli = new Command();
 
@@ -9,4 +9,4 @@ cli
   .option('-d, --debug', 'Enable debug logging.')
   .action(main);
 
-module.exports = cli;
+export default cli;

@@ -1,4 +1,6 @@
-const getTracks = (html) => {
+import { TrackRaw } from 'types/lib';
+
+const getTracks = (html: string): TrackRaw[] => {
   const unparsedWithTrailingCommas = html
     .match(/tracks = \[[.\s\S]*?\]/)[0]
     .replace('tracks = ', '');
@@ -11,4 +13,4 @@ const getTracks = (html) => {
   return tracks;
 };
 
-module.exports = getTracks;
+export default getTracks;

@@ -1,13 +1,18 @@
-const {
+import { MainCommandOptions } from 'types/cli';
+import {
   getBody, getTracks, validateTracks, downloadTrack, logger,
-} = require('../lib');
+} from '../lib';
 
 const defaults = {
   DIR: '.',
   URL: 'https://tokybook.com/tales-from-earthsea/',
 };
 
-const main = async (dir = defaults.DIR, url = defaults.URL, { debug: isDebugEnabled }) => {
+const main = async (
+  dir = defaults.DIR,
+  url = defaults.URL,
+  { debug: isDebugEnabled }: MainCommandOptions,
+) => {
   logger.level = isDebugEnabled ? 'debug' : 'info';
   logger.debug({ dir, url });
 
@@ -22,4 +27,4 @@ const main = async (dir = defaults.DIR, url = defaults.URL, { debug: isDebugEnab
   logger.info(`Completed :: Downloaded ${tracks.length} tracks.`);
 };
 
-module.exports = main;
+export default main;
