@@ -1,5 +1,5 @@
 import { DownloadConfig, TrackWithUrl } from 'types/lib';
-import downloadTrack from './downloadTrack';
+import downloadTrack from '.';
 
 const downloadWithConcurrencyLimit = (
   tracks: TrackWithUrl[],
