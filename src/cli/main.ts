@@ -1,6 +1,6 @@
 import { MainCommandOptions } from 'types/cli';
 import {
-  getBody, getTracks, validateTracks, downloadTrack, logger,
+  getBody, getTracks, validateTracks, logger, downloadWithConcurrencyLimit,
 } from '../lib';
 
 const defaults = {
@@ -11,7 +11,7 @@ const defaults = {
 const main = async (
   dir = defaults.DIR,
   url = defaults.URL,
-  { debug: isDebugEnabled }: MainCommandOptions,
+  { debug: isDebugEnabled, limit }: MainCommandOptions,
 ) => {
   logger.level = isDebugEnabled ? 'debug' : 'info';
   logger.debug({ dir, url });
@@ -22,7 +22,7 @@ const main = async (
 
   logger.info(`Started :: Downloading ${tracks.length} tracks.`);
 
-  await Promise.all(tracks.map((track) => downloadTrack(track, dir)));
+  await downloadWithConcurrencyLimit(tracks, { dir, limit });
 
   logger.info(`Completed :: Downloaded ${tracks.length} tracks.`);
 };

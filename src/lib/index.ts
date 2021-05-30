@@ -1,9 +1,9 @@
 import getBody from './getBody';
 import getTracks from './getTracks';
 import validateTracks from './validateTracks';
-import downloadTrack from './downloadTrack';
 import logger from './logger';
+import downloadWithConcurrencyLimit from './downloadWithConcurrencyLimit';
 
 export {
-  getBody, getTracks, validateTracks, downloadTrack, logger,
+  getBody, getTracks, validateTracks, logger, downloadWithConcurrencyLimit,
 };
