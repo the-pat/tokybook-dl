@@ -1,3 +1,4 @@
 export type MainCommandOptions = {
-  debug: boolean
+  debug: boolean,
+  limit: number
 };
