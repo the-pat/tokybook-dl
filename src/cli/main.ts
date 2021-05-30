@@ -1,6 +1,6 @@
 import { MainCommandOptions } from 'types/cli';
 import {
-  getBody, getTracks, validateTracks, logger, downloadWithConcurrencyLimit,
+  getBody, getTracks, validateTracks, logger, downloadTracks,
 } from '../lib';
 
 const defaults = {
@@ -22,7 +22,7 @@ const main = async (
 
   logger.info(`Started :: Downloading ${tracks.length} tracks.`);
 
-  await downloadWithConcurrencyLimit(tracks, { dir, limit });
+  await downloadTracks(tracks, { dir, limit });
 
   logger.info(`Completed :: Downloaded ${tracks.length} tracks.`);
 };
