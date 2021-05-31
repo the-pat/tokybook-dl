@@ -1,5 +1,14 @@
 {
   "extends": "../tsconfig.json",
-  "exclude": ["../src"],
-  "include": ["./"],
+  "exclude": ["../src/**/*"],
+  "include": ["./**/*"],
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "types/*": ["src/types/*"],
+      "cli/*": ["src/cli/*"],
+      "lib/*": ["src/lib/*"],
+      "const/*": ["src/const/*"]
+    }
+  }
 }

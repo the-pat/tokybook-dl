@@ -1,20 +1,16 @@
 import { MainCommandOptions } from 'types/cli';
+
 import {
-  getBody, getTracks, validateTracks, downloadTrack, logger,
+  getBody, getTracks, validateTracks, logger, downloadTracks,
 } from '../lib';
 
-const defaults = {
-  DIR: '.',
-  URL: 'https://tokybook.com/tales-from-earthsea/',
-};
-
 const main = async (
-  dir = defaults.DIR,
-  url = defaults.URL,
-  { debug: isDebugEnabled }: MainCommandOptions,
+  dir: string,
+  url: string,
+  { debug: isDebugEnabled, limit: concurrency }: MainCommandOptions,
 ) => {
   logger.level = isDebugEnabled ? 'debug' : 'info';
-  logger.debug({ dir, url });
+  logger.debug({ dir, url, concurrency });
 
   const body = await getBody(url);
   const unvalidatedTracks = getTracks(body);
@@ -22,7 +18,7 @@ const main = async (
 
   logger.info(`Started :: Downloading ${tracks.length} tracks.`);
 
-  await Promise.all(tracks.map((track) => downloadTrack(track, dir)));
+  await downloadTracks(tracks, { dir, concurrency });
 
   logger.info(`Completed :: Downloaded ${tracks.length} tracks.`);
 };
