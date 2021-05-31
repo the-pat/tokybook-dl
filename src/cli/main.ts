@@ -11,7 +11,7 @@ const defaults = {
 const main = async (
   dir = defaults.DIR,
   url = defaults.URL,
-  { debug: isDebugEnabled, limit }: MainCommandOptions,
+  { debug: isDebugEnabled, limit: concurrency }: MainCommandOptions,
 ) => {
   logger.level = isDebugEnabled ? 'debug' : 'info';
   logger.debug({ dir, url });
@@ -22,7 +22,7 @@ const main = async (
 
   logger.info(`Started :: Downloading ${tracks.length} tracks.`);
 
-  await downloadTracks(tracks, { dir, limit });
+  await downloadTracks(tracks, { dir, concurrency });
 
   logger.info(`Completed :: Downloaded ${tracks.length} tracks.`);
 };
