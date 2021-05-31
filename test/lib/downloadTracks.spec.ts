@@ -5,6 +5,7 @@ import downloadTrack from 'lib/downloadTracks/downloadTrack';
 import { mocked } from 'ts-jest/utils';
 
 jest.mock('lib/downloadTracks/downloadTrack');
+jest.mock('lib/logger');
 
 const mockedDownloadTrack = mocked(downloadTrack);
 describe('downloadTracks', () => {
