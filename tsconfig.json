@@ -14,6 +14,7 @@
         "node_modules/*"
       ],
       "types/*": ["src/types/*"],
+      "const/*": ["src/const/*"]
     }
   },
   "include": [
