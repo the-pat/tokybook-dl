@@ -1,18 +1,25 @@
-import pLimit, { Limit } from 'p-limit';
-import curry from 'lodash.curry';
+import pLimit from 'p-limit';
 
 import { DownloadConfig, TrackWithUrl } from 'types/lib';
 import downloadTrack from './downloadTrack';
+import logger from '../logger';
 
-const downloadTrackWith = (dir: string, limited: Limit, track: TrackWithUrl) => limited(
-  () => downloadTrack(track, dir),
-);
-const downloadTrackBy = ({ dir, concurrency }: DownloadConfig) => curry(downloadTrackWith)(dir)(
-  pLimit(concurrency),
+let downloadedIndex = 1;
+const completionMessage = (index: number, trackCount: number) => `Downloaded :: Track ${index}/${trackCount}`;
+
+const downloadTrackWith = (
+  { dir, concurrency }: DownloadConfig, trackCount: number,
+) => (
+  track: TrackWithUrl,
+) => pLimit(concurrency)(
+  () => downloadTrack(track, dir)
+    .then(() => completionMessage(downloadedIndex, trackCount))
+    .then((message) => logger.info(message))
+    .then(() => { downloadedIndex += 1; }),
 );
 const downloadTracks = (
   tracks: TrackWithUrl[],
   config: DownloadConfig,
-) => Promise.all(tracks.map(downloadTrackBy(config)));
+) => Promise.all(tracks.map(downloadTrackWith(config, tracks.length)));
 
 export default downloadTracks;

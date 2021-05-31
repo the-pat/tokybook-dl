@@ -2,8 +2,11 @@ import { TrackWithUrl, DownloadConfig } from 'types/lib';
 import downloadTracks from 'lib/downloadTracks';
 import downloadTrack from 'lib/downloadTracks/downloadTrack';
 
+import { mocked } from 'ts-jest/utils';
+
 jest.mock('lib/downloadTracks/downloadTrack');
 
+const mockedDownloadTrack = mocked(downloadTrack);
 describe('downloadTracks', () => {
   it('should download tracks regardless of the concurrency or directory specified', async () => {
     // arrange
@@ -14,6 +17,8 @@ describe('downloadTracks', () => {
     const dir = './some/dir';
     const concurrency = 1;
     const config: DownloadConfig = { dir, concurrency };
+
+    mockedDownloadTrack.mockResolvedValue();
 
     // act
     await downloadTracks(tracks, config);

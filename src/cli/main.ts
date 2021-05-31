@@ -11,7 +11,7 @@ const main = async (
   { debug: isDebugEnabled, limit: concurrency }: MainCommandOptions,
 ) => {
   logger.level = isDebugEnabled ? 'debug' : 'info';
-  logger.debug({ dir, url });
+  logger.debug({ dir, url, concurrency });
 
   const body = await getBody(url);
   const unvalidatedTracks = getTracks(body);
