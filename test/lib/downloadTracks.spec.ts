@@ -1,8 +1,8 @@
 import { TrackWithUrl, DownloadConfig } from 'types/lib';
-import downloadTracks from '../../src/lib/downloadTracks';
-import downloadTrack from '../../src/lib/downloadTracks/downloadTrack';
+import downloadTracks from 'lib/downloadTracks';
+import downloadTrack from 'lib/downloadTracks/downloadTrack';
 
-jest.mock('../../src/lib/downloadTracks/downloadTrack');
+jest.mock('lib/downloadTracks/downloadTrack');
 
 describe('downloadTracks', () => {
   it('should download tracks regardless of the concurrency or directory specified', async () => {

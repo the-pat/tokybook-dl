@@ -14,10 +14,10 @@
         "node_modules/*"
       ],
       "types/*": ["src/types/*"],
-      "const/*": ["src/const/*"]
+      "const/*": ["src/const/*"],
     }
   },
   "include": [
-    "src/**/*",
+    "src/**/*"
   ]
 }

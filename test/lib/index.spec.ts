@@ -1,5 +1,5 @@
 import { TrackWithUrl } from 'types/lib';
-import getDirPath from '../../src/lib/downloadTracks/getDirPath';
+import getDirPath from 'lib/downloadTracks/getDirPath';
 
 describe('getDirPath', () => {
   it('should prefer the book name given in the final URL component', () => {
