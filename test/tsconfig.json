@@ -7,7 +7,8 @@
     "paths": {
       "types/*": ["src/types/*"],
       "cli/*": ["src/cli/*"],
-      "lib/*": ["src/lib/*"]
+      "lib/*": ["src/lib/*"],
+      "const/*": ["src/const/*"]
     }
   }
 }

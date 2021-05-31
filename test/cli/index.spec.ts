@@ -1,4 +1,4 @@
-import processInput from '../../src/cli/processInput';
+import processInput from 'cli/processInput';
 
 describe('processing inputs', () => {
   describe('integer', () => {
@@ -57,6 +57,45 @@ describe('processing inputs', () => {
 
       // act
       const actual = processInput.integer(argument);
+
+      // assert
+      expect(actual).toBe(expected);
+    });
+  });
+
+  describe('url', () => {
+    describe('should throw when', () => {
+      const actCallbackBy = (argument: string) => () => processInput.url(argument);
+      it('url is malformed', () => {
+        // arrange
+        const argument = 'http://@@@@@@@@@@@@@@@';
+
+        // act
+        const actCallback = actCallbackBy(argument);
+
+        // assert
+        expect(actCallback).toThrow();
+      });
+
+      it('url is not from the tokybook origin', () => {
+        // arrange
+        const argument = 'https://www.google.com';
+
+        // act
+        const actCallback = actCallbackBy(argument);
+
+        // assert
+        expect(actCallback).toThrow();
+      });
+    });
+
+    it('should give the url as output when the url is valid', () => {
+      // arrange
+      const argument = 'https://www.tokybook.com/tales-from-earthsea/';
+      const expected = 'https://www.tokybook.com/tales-from-earthsea/';
+
+      // act
+      const actual = processInput.url(argument);
 
       // assert
       expect(actual).toBe(expected);

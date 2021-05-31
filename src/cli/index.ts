@@ -20,6 +20,11 @@ cli
     processInput.integer,
     settings.defaults.concurrency,
   )
-  .action(main);
+  .action((dir, url, opts) => {
+    const sanitizedDir = dir ?? settings.defaults.directory;
+    const sanitizedUrl = processInput.url(url) ?? settings.defaults.directory;
+
+    return main(sanitizedDir, sanitizedUrl, opts);
+  });
 
 export default cli;
