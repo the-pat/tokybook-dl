@@ -1,7 +1,5 @@
 import { Command } from 'commander';
 
-import settings from 'const/settings';
-
 import main from './main';
 import processInput from './processInput';
 
@@ -18,11 +16,11 @@ cli
     '-l, --limit <number>',
     'Limit the maximum number of tracks that can be downloaded at once.',
     processInput.integer,
-    settings.defaults.concurrency,
+    3,
   )
   .action((dir, url, opts) => {
-    const sanitizedDir = dir ?? settings.defaults.directory;
-    const sanitizedUrl = processInput.url(url) ?? settings.defaults.directory;
+    const sanitizedDir = dir ?? '.';
+    const sanitizedUrl = processInput.url(url) ?? 'https://tokybook.com/tales-from-earthsea/';
 
     return main(sanitizedDir, sanitizedUrl, opts);
   });

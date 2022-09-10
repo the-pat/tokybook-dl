@@ -1,5 +1,5 @@
 import { InvalidOptionArgumentError } from 'commander';
-import { tokybookOrigin } from 'const/settings';
+
 /**
  * Process integer inputs.
  *
@@ -25,7 +25,7 @@ const url = (value: string) => {
   try {
     const maybeTokybookUrl = new URL(value);
 
-    isValid = maybeTokybookUrl.origin === tokybookOrigin;
+    isValid = maybeTokybookUrl.origin === 'https://tokybook.com';
   } catch (_) {
     isValid = false;
   }
