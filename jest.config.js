@@ -1,15 +1,17 @@
-const tsconfigPath = './test/tsconfig.json';
+const tsconfigPath = "./test/tsconfig.json";
 const { compilerOptions } = require(tsconfigPath);
 
-const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { pathsToModuleNameMapper } = require("ts-jest/utils");
 
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-  preset: 'ts-jest',
+  preset: "ts-jest",
   globals: {
-    'ts-jest': {
+    "ts-jest": {
       tsconfig: tsconfigPath,
-    }
+    },
   },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: "<rootDir>/" }),
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: "<rootDir>/",
+  }),
 };

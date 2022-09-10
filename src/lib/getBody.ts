@@ -1,4 +1,4 @@
-import got from 'got';
+import got from "got";
 
 const getBody = async (url: string) => {
   const response = await got(url);

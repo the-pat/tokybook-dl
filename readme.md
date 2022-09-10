@@ -4,8 +4,15 @@
 
 ## Usage
 
-1. Update the `url` and `dir` variables for the book URL and directory you want to use.
-2. Run `npm start` to start downloading the book.
+```bash
+npm install && npm run build
+
+# Prints the CLI instructions.
+npm start -- --help
+
+# Use npm start -- [args] to run the CLI program.
+npm start -- 'https://tokybook.com/tales-from-earthsea' ./my-audiobooks-dir
+```
 
 ## References
 

@@ -1,10 +1,9 @@
-import { logger } from './lib';
-import cli from './cli';
+#!/usr/bin/env node
 
-(async () => {
-  try {
-    await cli.parseAsync();
-  } catch (error) {
-    logger.error(error);
-  }
-})();
+import { logger } from "./lib";
+import cli from "./cli";
+
+cli.parseAsync().catch((error) => {
+  logger.error(error);
+  process.exit(1);
+});

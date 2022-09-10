@@ -1,4 +1,19 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm test
+format_failed=0
+npm run format:check || format_failed=1
+if [ $format_failed -eq 1 ]; then
+  printf "\nHint: You can use 'npm run format:fix' to let prettier attempt to fix the file(s) for you.\n\n"
+  exit 1
+fi
+
+lint_failed=0
+npm run lint:check || lint_failed=1
+if [ $lint_failed -eq 1 ]; then
+  printf "\nHint: You can use 'npm run lint:fix' to let eslint attempt to fix the file(s) for you.\n\n"
+  exit 1
+fi
+
+npm run test:unit
+npm run test:e2e
