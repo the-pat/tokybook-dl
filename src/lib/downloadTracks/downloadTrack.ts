@@ -26,7 +26,10 @@ const getUrl = async (track: TrackWithUrl) => {
   return body.link_mp3;
 };
 
-const downloadTrack = async (track: TrackWithUrl, dir: string) => {
+const downloadTrack = async (
+  track: TrackWithUrl,
+  dir: string
+): Promise<void> => {
   let [, , filename] = track.chapter_link_dropbox.split("/");
 
   const fileparts = filename.split(" - ");

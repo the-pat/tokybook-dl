@@ -2,7 +2,7 @@ import path from "path";
 import Case from "case";
 import { TrackWithUrl } from "types/lib";
 
-const getDirPath = (track: TrackWithUrl, dir: string) => {
+const getDirPath = (track: TrackWithUrl, dir: string): string => {
   const dropboxLinkComponents = track.chapter_link_dropbox.split("/");
 
   let [bookTitleFromDropboxURL] = dropboxLinkComponents;

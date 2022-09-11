@@ -5,9 +5,9 @@
     "node": true
   },
   "extends": [
+    "airbnb-base",
     "airbnb-typescript/base",
-    // TODO: Enable this after typescript conversion?
-    // "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "parserOptions": {
