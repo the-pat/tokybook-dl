@@ -7,6 +7,7 @@ import fs from 'fs';
 import { AutoplaylistMp3, TrackWithUrl } from 'types/lib';
 import getDirPath from './getDirPath';
 
+const MP3_ENDPOINT = 'https://api.crystallization.tv/api-us/getMp3Link' as const;
 const pipeline = promisify(stream.pipeline);
 
 const getId = (id: number) => {
@@ -17,7 +18,7 @@ const getId = (id: number) => {
 
 const getUrl = async (track: TrackWithUrl) => {
   const { body } = await got.post<AutoplaylistMp3>(
-    'https://autoplaylist.top/api-us/getMp3Link',
+    MP3_ENDPOINT,
     {
       json: { chapterId: track.chapter_id, serverType: 1 },
       responseType: 'json',
