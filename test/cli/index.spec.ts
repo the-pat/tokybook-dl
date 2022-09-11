@@ -91,8 +91,20 @@ describe('processing inputs', () => {
 
     it('should give the url as output when the url is valid', () => {
       // arrange
+      const argument = 'https://tokybook.com/tales-from-earthsea/';
+      const expected = 'https://tokybook.com/tales-from-earthsea/';
+
+      // act
+      const actual = processInput.url(argument);
+
+      // assert
+      expect(actual).toBe(expected);
+    });
+
+    it('should rewrite the url without www when the url is otherwise valid', () => {
+      // arrange
       const argument = 'https://www.tokybook.com/tales-from-earthsea/';
-      const expected = 'https://www.tokybook.com/tales-from-earthsea/';
+      const expected = 'https://tokybook.com/tales-from-earthsea/';
 
       // act
       const actual = processInput.url(argument);

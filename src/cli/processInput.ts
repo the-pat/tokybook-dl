@@ -1,5 +1,5 @@
 import { InvalidOptionArgumentError } from 'commander';
-import { tokybookOrigin } from 'const/settings';
+import { tokybookNakedDomain } from 'const/settings';
 /**
  * Process integer inputs.
  *
@@ -20,18 +20,26 @@ const integer = (value: string) => {
   return result;
 };
 
+/**
+ * Process Tokybook URL inputs.
+ *
+ * Validation: Will not throw if the input is a URL with a Tokybook hostname.
+ * Sanitization: Sets the URL hostname to the correct Tokybook naked domain (without subdomain).
+ */
 const url = (value: string) => {
   let isValid = true;
+  let maybeTokybookUrl: URL;
   try {
-    const maybeTokybookUrl = new URL(value);
-
-    isValid = maybeTokybookUrl.origin === tokybookOrigin;
+    maybeTokybookUrl = new URL(value);
+    isValid = /(\w+\.)?tokybook\.com/.test(maybeTokybookUrl.hostname);
   } catch (_) {
     isValid = false;
   }
+
   if (!isValid) throw new InvalidOptionArgumentError('Not a valid Tokybook URL.');
 
-  return value;
+  maybeTokybookUrl.hostname = tokybookNakedDomain;
+  return maybeTokybookUrl.toString();
 };
 
 /**
