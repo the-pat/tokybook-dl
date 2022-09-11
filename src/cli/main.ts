@@ -1,15 +1,19 @@
-import { MainCommandOptions } from 'types/cli';
+import { MainCommandOptions } from "types/cli";
 
 import {
-  getBody, getTracks, validateTracks, logger, downloadTracks,
-} from '../lib';
+  getBody,
+  getTracks,
+  validateTracks,
+  logger,
+  downloadTracks,
+} from "../lib";
 
 const main = async (
   dir: string,
   url: string,
-  { debug: isDebugEnabled, limit: concurrency }: MainCommandOptions,
+  { debug: isDebugEnabled, limit: concurrency }: MainCommandOptions
 ) => {
-  logger.level = isDebugEnabled ? 'debug' : 'info';
+  logger.level = isDebugEnabled ? "debug" : "info";
   logger.debug({ dir, url, concurrency });
 
   const body = await getBody(url);

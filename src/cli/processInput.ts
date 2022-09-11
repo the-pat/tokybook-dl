@@ -1,5 +1,5 @@
-import { InvalidOptionArgumentError } from 'commander';
-import { tokybookNakedDomain } from 'const/settings';
+import { InvalidOptionArgumentError } from "commander";
+import { tokybookNakedDomain } from "const/settings";
 /**
  * Process integer inputs.
  *
@@ -16,7 +16,7 @@ const integer = (value: string) => {
     }
   };
   const { success, result } = tryParse(value);
-  if (!success) throw new InvalidOptionArgumentError('Not a number.');
+  if (!success) throw new InvalidOptionArgumentError("Not a number.");
   return result;
 };
 
@@ -36,7 +36,8 @@ const url = (value: string) => {
     isValid = false;
   }
 
-  if (!isValid) throw new InvalidOptionArgumentError('Not a valid Tokybook URL.');
+  if (!isValid)
+    throw new InvalidOptionArgumentError("Not a valid Tokybook URL.");
 
   maybeTokybookUrl.hostname = tokybookNakedDomain;
   return maybeTokybookUrl.toString();

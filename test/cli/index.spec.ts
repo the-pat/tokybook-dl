@@ -1,12 +1,13 @@
-import processInput from 'cli/processInput';
+import processInput from "cli/processInput";
 
-describe('processing inputs', () => {
-  describe('integer', () => {
-    describe('should throw when', () => {
-      const actCallbackBy = (argument: string) => () => processInput.integer(argument);
-      it('given a letter', () => {
+describe("processing inputs", () => {
+  describe("integer", () => {
+    describe("should throw when", () => {
+      const actCallbackBy = (argument: string) => () =>
+        processInput.integer(argument);
+      it("given a letter", () => {
         // arrange
-        const argument = 'A';
+        const argument = "A";
 
         // act
         const actCallback = actCallbackBy(argument);
@@ -15,9 +16,9 @@ describe('processing inputs', () => {
         expect(actCallback).toThrow();
       });
 
-      it('given a symbol', () => {
+      it("given a symbol", () => {
         // arrange
-        const argument = '@';
+        const argument = "@";
 
         // act
         const actCallback = actCallbackBy(argument);
@@ -26,9 +27,9 @@ describe('processing inputs', () => {
         expect(actCallback).toThrow();
       });
 
-      it('given whitespace', () => {
+      it("given whitespace", () => {
         // arrange
-        const argument = ' ';
+        const argument = " ";
 
         // act
         const actCallback = actCallbackBy(argument);
@@ -38,9 +39,9 @@ describe('processing inputs', () => {
       });
     });
 
-    it('should give an integer as input when the argument in a string integer', () => {
+    it("should give an integer as input when the argument in a string integer", () => {
       // arrange
-      const argument = '1';
+      const argument = "1";
       const expected = 1;
 
       // act
@@ -50,9 +51,9 @@ describe('processing inputs', () => {
       expect(actual).toBe(expected);
     });
 
-    it('should give a floored integer when the argument is a floating-point string number', () => {
+    it("should give a floored integer when the argument is a floating-point string number", () => {
       // arrange
-      const argument = '1.9';
+      const argument = "1.9";
       const expected = 1;
 
       // act
@@ -63,12 +64,13 @@ describe('processing inputs', () => {
     });
   });
 
-  describe('url', () => {
-    describe('should throw when', () => {
-      const actCallbackBy = (argument: string) => () => processInput.url(argument);
-      it('url is malformed', () => {
+  describe("url", () => {
+    describe("should throw when", () => {
+      const actCallbackBy = (argument: string) => () =>
+        processInput.url(argument);
+      it("url is malformed", () => {
         // arrange
-        const argument = 'http://@@@@@@@@@@@@@@@';
+        const argument = "http://@@@@@@@@@@@@@@@";
 
         // act
         const actCallback = actCallbackBy(argument);
@@ -77,9 +79,9 @@ describe('processing inputs', () => {
         expect(actCallback).toThrow();
       });
 
-      it('url is not from the tokybook origin', () => {
+      it("url is not from the tokybook origin", () => {
         // arrange
-        const argument = 'https://www.google.com';
+        const argument = "https://www.google.com";
 
         // act
         const actCallback = actCallbackBy(argument);
@@ -89,10 +91,10 @@ describe('processing inputs', () => {
       });
     });
 
-    it('should give the url as output when the url is valid', () => {
+    it("should give the url as output when the url is valid", () => {
       // arrange
-      const argument = 'https://tokybook.com/tales-from-earthsea/';
-      const expected = 'https://tokybook.com/tales-from-earthsea/';
+      const argument = "https://tokybook.com/tales-from-earthsea/";
+      const expected = "https://tokybook.com/tales-from-earthsea/";
 
       // act
       const actual = processInput.url(argument);
@@ -101,10 +103,10 @@ describe('processing inputs', () => {
       expect(actual).toBe(expected);
     });
 
-    it('should rewrite the url without www when the url is otherwise valid', () => {
+    it("should rewrite the url without www when the url is otherwise valid", () => {
       // arrange
-      const argument = 'https://www.tokybook.com/tales-from-earthsea/';
-      const expected = 'https://tokybook.com/tales-from-earthsea/';
+      const argument = "https://www.tokybook.com/tales-from-earthsea/";
+      const expected = "https://tokybook.com/tales-from-earthsea/";
 
       // act
       const actual = processInput.url(argument);
