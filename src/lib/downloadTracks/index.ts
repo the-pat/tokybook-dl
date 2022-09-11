@@ -19,7 +19,10 @@ const downloadTrackWith =
           downloadedIndex += 1;
         })
     );
-const downloadTracks = (tracks: TrackWithUrl[], config: DownloadConfig) =>
+const downloadTracks = (
+  tracks: TrackWithUrl[],
+  config: DownloadConfig
+): Promise<void[]> =>
   Promise.all(tracks.map(downloadTrackWith(config, tracks.length)));
 
 export default downloadTracks;

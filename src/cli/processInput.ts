@@ -6,7 +6,7 @@ import { tokybookNakedDomain } from "const/settings";
  * Validation: Will not throw if the input is a number.
  * Sanitization: Floors a floating point number to an integer.
  */
-const integer = (value: string) => {
+const integer = (value: string): number => {
   const tryParse = (v: string) => {
     try {
       const parsed = parseInt(v, 10);
@@ -26,7 +26,7 @@ const integer = (value: string) => {
  * Validation: Will not throw if the input is a URL with a Tokybook hostname.
  * Sanitization: Sets the URL hostname to the correct Tokybook naked domain (without subdomain).
  */
-const url = (value: string) => {
+const url = (value: string): string => {
   let isValid = true;
   let maybeTokybookUrl: URL;
   try {

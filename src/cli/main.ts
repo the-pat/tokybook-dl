@@ -12,7 +12,7 @@ const main = async (
   dir: string,
   url: string,
   { debug: isDebugEnabled, limit: concurrency }: MainCommandOptions
-) => {
+): Promise<void> => {
   logger.level = isDebugEnabled ? "debug" : "info";
   logger.debug({ dir, url, concurrency });
 
