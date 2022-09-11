@@ -6,5 +6,6 @@ import cli from './cli';
     await cli.parseAsync();
   } catch (error) {
     logger.error(error);
+    process.exit(1);
   }
 })();

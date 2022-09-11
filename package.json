@@ -9,10 +9,11 @@
     "debug": "node --inspect=6666 -r ts-node/register -r tsconfig-paths/register src/index.ts",
     "test": "eslint . && jest .",
     "posttest": "npm run build",
+    "test:e2e": "./test/e2e.sh",
     "jest": "jest .",
     "eslint": "eslint --fix .",
     "prepare": "husky install",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test && ./test/e2e.sh"
   },
   "repository": {
     "type": "git",
