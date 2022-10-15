@@ -1,20 +1,20 @@
 {
   "name": "tokybook-dl",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc && tsc-alias",
     "debug": "node --inspect=6666 -r ts-node/register -r tsconfig-paths/register src/index.ts",
-    "test": "prettier -c . && eslint . && jest .",
-    "posttest": "npm run build",
+    "format:check": "prettier -c .",
+    "format:fix": "prettier -w .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test:unit": "jest .",
     "test:e2e": "./test/e2e.sh",
-    "jest": "jest .",
-    "eslint": "eslint --fix .",
-    "prettier": "prettier -w .",
     "prepare": "husky install",
-    "prepublishOnly": "npm run test && ./test/e2e.sh"
+    "prepublishOnly": "npm run test:unit && npm run test:e2e"
   },
   "repository": {
     "type": "git",

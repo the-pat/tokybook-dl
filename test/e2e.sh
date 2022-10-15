@@ -10,7 +10,7 @@ test_url='https://tokybook.com/tales-from-earthsea/'
 test_dir=e2e-tmp
 
 npm run build || failed=1
-npm run start -- $test_dir $test_url 1> /dev/null || failed=1
+npm run start -- $test_url $test_dir 1> /dev/null || failed=1
 
 rm -rf $test_dir || true
 
