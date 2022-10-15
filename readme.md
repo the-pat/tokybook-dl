@@ -1,13 +1,17 @@
 # tokybook-dl
 
-> A simple tool to download audio books from Tokybook.com
+> A simple tool to download audio books from [Tokybook.com](https://tokybook.com).
 
 ## Usage
 
-1. Update the `url` and `dir` variables for the book URL and directory you want to use.
-2. Run `npm start` to start downloading the book.
+```bash
+# After cloning the repo and cd'ing to the directory:
+npm install && npm run build
 
-## References
+# The CLI will be available at ./dist/index.js.
+# Use npm start -- [dir, url] to download audiobook tracks.
+npm start -- ./my-audobooks-dir 'https://tokybook.com/tales-from-earthsea'
 
-- [`got`](https://github.com/sindresorhus/got) - Human-friendly and powerful HTTP request library for Node.js
-- [Tokybook](https://tokybook.com) - Free audiobook streaming site.
+# Use the --help command to see other CLI instructions.
+npm start -- --help
+```

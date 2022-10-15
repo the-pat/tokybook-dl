@@ -22,7 +22,7 @@ cli
   )
   .action((dir, url, opts) => {
     const sanitizedDir = dir ?? settings.defaults.directory;
-    const sanitizedUrl = processInput.url(url) ?? settings.defaults.directory;
+    const sanitizedUrl = processInput.url(url ?? settings.defaults.url);
 
     return main(sanitizedDir, sanitizedUrl, opts);
   });

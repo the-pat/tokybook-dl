@@ -1,9 +1,9 @@
-export const tokybookOrigin = 'https://www.tokybook.com' as const;
+export const tokybookNakedDomain = 'tokybook.com' as const;
 const settings = {
   defaults: {
     concurrency: Number.MAX_SAFE_INTEGER,
     directory: '.',
-    url: `${tokybookOrigin}/tales-from-earthsea/`,
+    url: `https://${tokybookNakedDomain}/tales-from-earthsea/`,
   },
 } as const;
 
